@@ -2,7 +2,7 @@
 ACSE (Advanced Compiler System for Education) is a simple compiler developed for educational purpose as a tool for the “Formal Languages and Compilers” course at Politecnico di Milano.
 ACSE is able to translate a source code written in LanCE 1.3 (Language for Compilers Education) into an assembly for the MACE architecture.
 
-
+-------------------------------
 To install the ACSE compiler type in the console: make
 
 To compile some examples (located in the directory ./tests) type: make tests
@@ -21,7 +21,7 @@ asm myprog.asm myprog.o
 
 mace myprog.o
 
---
+-------------------------------
 EXERCISE
 int a[10];
 int b = 16; //16 in binary is 10000 so the least significant 1 is in 4th position -> we access the 4th element in the array
