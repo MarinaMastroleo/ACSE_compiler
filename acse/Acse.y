@@ -546,41 +546,45 @@ exp: NUMBER      { $$ = create_expression ($1, IMMEDIATE); }
                   }
                }
    | LPAR IDENTIFIER MARINA exp RPAR{
+
     t_axe_variable *arr=getVariable(program , $2);
     if(!arr->isArray){yyerror("error");YYERROR;}
     if($4.value==0){yyerror("error");YYERROR;}
+
     if($4.expression_type==IMMEDIATE){
     int res=0;
     int value=$4.value; int count=0;
     while(res==0){
     res=res+(value&1); value=value>>1;count++;
-    }count--;
+    }
+    count--;
     int r_final=loadArrayElement(program,$2,create_expression(count,REGISTER));
     $$=create_expression(r_final,REGISTER);
-    }
-else{
-int r_temp=gen_load_immediate(program,0);
-int r_res=gen_load_immediate(program,0);
-int r_count=gen_load_immediate(program,0);
-int r_value=gen_load_immediate(program,0);
-gen_add_instruction(program,r_value,REG_0,$4.value,CG_DIRECT_ALL);
-t_axe_label *l_cond=assignNewLabel(program);
-t_axe_label *l_exit=newLabel(program);
-gen_subi_instruction(program,REG_0,r_res,0);
-gen_bne_instruction(program,l_exit,0);
-gen_andbi_instruction(program,r_temp,r_value,1);
-gen_add_instruction(program,r_res,r_res,r_temp,CG_DIRECT_ALL);
-gen_shri_instruction(program,r_value,r_value,1);
-gen_addi_instruction(program,r_count,r_count,1);
-gen_bt_instruction(program,l_cond,0);
-assignLabel(program,l_exit);
-gen_subi_instruction(program,r_count,r_count,1);
+    }else
+    {
+    int r_temp=gen_load_immediate(program,0);
+    int r_res=gen_load_immediate(program,0);
+    int r_count=gen_load_immediate(program,0);
+    int r_value=gen_load_immediate(program,0);
+    gen_add_instruction(program,r_value,REG_0,$4.value,CG_DIRECT_ALL);
+    t_axe_label *l_cond=assignNewLabel(program);
+    t_axe_label *l_exit=newLabel(program);
+    gen_subi_instruction(program,REG_0,r_res,0);
+    gen_bne_instruction(program,l_exit,0);
+    gen_andbi_instruction(program,r_temp,r_value,1);
+    gen_add_instruction(program,r_res,r_res,r_temp,CG_DIRECT_ALL);
+    gen_shri_instruction(program,r_value,r_value,1);
+    gen_addi_instruction(program,r_count,r_count,1);
+    gen_bt_instruction(program,l_cond,0);
+    assignLabel(program,l_exit);
+    gen_subi_instruction(program,r_count,r_count,1);
     int r_final=loadArrayElement(program,$2,create_expression(r_count,REGISTER));
     $$=create_expression(r_final,REGISTER);
 
-free($2);
+    free($2);
+    }
 }
-}
+
 ;
 
 %%
