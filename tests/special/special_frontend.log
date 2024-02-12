@@ -1,0 +1,98 @@
+**************************
+          PROGRAM         
+**************************
+
+-----------
+ VARIABLES
+-----------
+[val]
+   type = INTEGER
+   location = R1
+[ulla]
+   type = INTEGER
+   location = R2
+[arr]
+   type = INTEGER, array size = 5
+   label = _arr (ID=0)
+
+--------------
+ INSTRUCTIONS
+--------------
+      ADDI R1 R0 #16       /* line 1 */
+      ADDI R2 R0 #0        /* line 2 */
+      MOVA R3 _arr         /* line 4 */
+      ADDI R4 R0 #0 
+      ADD (R3) R0 R4 
+      MOVA R5 _arr         /* line 5 */
+      ADDI R5 R5 #1 
+      ADDI R6 R0 #1 
+      ADD (R5) R0 R6 
+      MOVA R7 _arr         /* line 6 */
+      ADDI R7 R7 #2 
+      ADDI R8 R0 #2 
+      ADD (R7) R0 R8 
+      MOVA R9 _arr         /* line 7 */
+      ADDI R9 R9 #3 
+      ADDI R10 R0 #3 
+      ADD (R9) R0 R10 
+      MOVA R11 _arr        /* line 8 */
+      ADDI R11 R11 #4 
+      ADDI R12 R0 #4 
+      ADD (R11) R0 R12 
+      ADDI R13 R0 #0       /* line 11 */
+      ADDI R14 R0 #0 
+      ADDI R15 R0 #0 
+      ADDI R16 R0 #0 
+      ADD R16 R0 R1 
+L1    SUBI R0 R14 #0 
+      BNE L2
+      ANDBI R13 R16 #1 
+      ADD R14 R14 R13 
+      SHRI R16 R16 #1 
+      ADDI R15 R15 #1 
+      BT L1
+L2    SUBI R15 R15 #1 
+      MOVA R17 _arr
+      ADD R17 R17 R15 
+      ADD R18 R0 (R17) 
+      ADD R2 R0 R18 
+      WRITE R2 0           /* line 12 */
+      ADDI R1 R0 #2        /* line 16 */
+      ADDI R19 R0 #0       /* line 17 */
+      ADDI R20 R0 #0 
+      ADDI R21 R0 #0 
+      ADDI R22 R0 #0 
+      ADD R22 R0 R1 
+L3    SUBI R0 R20 #0 
+      BNE L4
+      ANDBI R19 R22 #1 
+      ADD R20 R20 R19 
+      SHRI R22 R22 #1 
+      ADDI R21 R21 #1 
+      BT L3
+L4    SUBI R21 R21 #1 
+      MOVA R23 _arr
+      ADD R23 R23 R21 
+      ADD R24 R0 (R23) 
+      ADD R2 R0 R24 
+      WRITE R2 0           /* line 18 */
+      ADDI R1 R0 #84       /* line 21 */
+      ADDI R25 R0 #0       /* line 22 */
+      ADDI R26 R0 #0 
+      ADDI R27 R0 #0 
+      ADDI R28 R0 #0 
+      ADD R28 R0 R1 
+L5    SUBI R0 R26 #0 
+      BNE L6
+      ANDBI R25 R28 #1 
+      ADD R26 R26 R25 
+      SHRI R28 R28 #1 
+      ADDI R27 R27 #1 
+      BT L5
+L6    SUBI R27 R27 #1 
+      MOVA R29 _arr
+      ADD R29 R29 R27 
+      ADD R30 R0 (R29) 
+      ADD R2 R0 R30 
+      WRITE R2 0           /* line 23 */
+      HALT                 /* line 26 */

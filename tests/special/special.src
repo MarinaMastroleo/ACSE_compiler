@@ -1,0 +1,23 @@
+int val= 16;
+int ulla=0;
+int arr[5];
+arr[0]=0;
+arr[1]=1;
+arr[2]=2;
+arr[3]=3;
+arr[4]=4;
+
+ulla= (arr ??? val);
+write(ulla);
+/*4*/
+
+val =2;
+ulla= (arr ??? val);
+write(ulla);
+/*1*/
+
+val =84;
+ulla= (arr ??? val);
+write(ulla);
+/*2*/
+
