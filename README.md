@@ -5,23 +5,16 @@ ACSE (Advanced Compiler System for Education) is a simple compiler developed for
 ACSE is able to translate a source code written in LanCE 1.3 (Language for Compilers Education) into an assembly for the MACE architecture.
 
 -------------------------------
-To install the ACSE compiler type in the console: make
+how to compile and run new Lance programs.
+TERMINAL:
 
-To compile some examples (located in the directory ./tests) type: make tests
+make clean
 
-In order to use the compiler/assembler/executor at first you have to export the directory 
+make (To install the ACSE compiler type in the console)
 
-./bin in your current PATH as follows:
+make tests (To compile some examples (located in the directory ./tests))
 
-export PATH=`pwd`/bin:$PATH
-
-You can compile and run new Lance programs in this way (suppose you have saved a Lance program in 'myprog.src'):
-
-acse myprog.src myprog.asm
-
-asm myprog.asm myprog.o
-
-mace myprog.o
+./bin/mace ./tests/special/special.o  
 
 -------------------------------
 EXERCISE
