@@ -17,7 +17,8 @@ make tests (To compile some examples (located in the directory ./tests))
 ./bin/mace ./tests/special/special.o  
 
 -------------------------------
-EXERCISE
+EXERCISE 
+
 int a[10];
 int b = 16; //16 in binary is 10000 so the least significant 1 is in 4th position -> we access the 4th element in the array
 /* a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] */
