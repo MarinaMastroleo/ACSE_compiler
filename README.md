@@ -6,7 +6,8 @@ ACSE is able to translate a source code written in LanCE 1.3 (Language for Compi
 
 -------------------------------
 how to compile and run new Lance programs.
-TERMINAL:
+
+TERMINAL :
 
 make clean
 
